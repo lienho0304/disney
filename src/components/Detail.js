@@ -56,13 +56,13 @@ const Background = styled.div`
 h3 {
 
   position:absolute;
-  margin:22%;
-font-size:50px;
+  margin:18%;
+font-size:40px;
   color:lightgrey !important;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   @media (min-width:748px) {
-    margin:13%;
-    font-size:70px;
+    margin:10%;
+    font-size:60px;
   }
   :hover {
     color:black!important;
