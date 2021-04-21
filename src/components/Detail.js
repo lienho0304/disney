@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import StarIcon from "@material-ui/icons/Star";
-
+import Rating from '@material-ui/lab/Rating'
 
 function Detail() {
   const [movies, setmovies] = useState({});
+  const [rating,setRating] =useState(0)
   const id = window.location.search.replace("?", "");
   const urlImage = "https://image.tmdb.org/t/p/original";
   useEffect(() => {
@@ -14,8 +15,17 @@ function Detail() {
       `https://api.themoviedb.org/3/movie/${id}?api_key=53bbbda70531137f811dfa0b5a584909&language=en-US"`
     )
       .then((res) => res.json())
-      .then((data) => setmovies(data));
+      .then((data) => {
+        setmovies(data)
+        setRating(data.vote_average/2)
+      }
+      
+     
+      
+      )
+      
   }, []);
+console.log(typeof(rating))
 
   return (
     <Background urlImage={{ background: `${urlImage}${movies.backdrop_path}` }}>
@@ -34,8 +44,9 @@ function Detail() {
           </Player>
         </Controls>
         <Sub>
-          Release:{movies.release_date}●Rating:{movies.vote_average}
-          <StarIcon fontSize="small" />
+          Release:{movies.release_date}●Rating:
+          <Rating name="half-rating-read" value={`${rating}`} precision={0.5} readOnly />
+          
         </Sub>
         <Detailtext>{movies.overview}</Detailtext>
       </DetailFilm>
