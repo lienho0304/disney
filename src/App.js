@@ -4,6 +4,9 @@ import Login from './components/Login'
 import Header from './components/Header'
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Home from './components/Home'
+import Series from './components/Series';
+import Movies from './components/Movies';
+import Detail from './components/Detail';
 
 function App() {
   return (
@@ -19,6 +22,17 @@ function App() {
      <Route path ='/home'>
        <Home/>
      </Route>
+     <Route path ='/series'>
+       <Series/>
+     </Route>
+     <Route path ='/movies'>
+       <Movies/>
+     </Route>
+     <Route path ='/details'>
+       <Detail/>
+     </Route>
+     
+     
     </Switch>
     </div>
     </BrowserRouter>

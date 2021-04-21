@@ -35,7 +35,7 @@ function Header() {
           <StarOutlinedIcon />
           <span>original</span>
         </a>
-        <a href="./movie">
+        <a href="./movies">
           <MovieIcon />
           <span>movie</span>
         </a>
