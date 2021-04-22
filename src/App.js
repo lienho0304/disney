@@ -7,7 +7,7 @@ import Home from './components/Home'
 import Series from './components/Series';
 import Movies from './components/Movies';
 import Detail from './components/Detail';
-
+import Search from './components/Search'
 function App() {
   return (
     <BrowserRouter>
@@ -30,6 +30,9 @@ function App() {
      </Route>
      <Route path ='/details'>
        <Detail/>
+     </Route>
+     <Route path ='/search'>
+       <Search/>
      </Route>
      
      

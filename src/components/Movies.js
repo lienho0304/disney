@@ -46,6 +46,7 @@ export default function Movies() {
 
   const [movies, setmovies] = useState([]);
   const urlImage = "https://image.tmdb.org/t/p/original";
+  console.log(window.location)
   useEffect(() => {
     fetch(
       "https://api.themoviedb.org/3/discover/movie?api_key=53bbbda70531137f811dfa0b5a584909&language=en-US"
