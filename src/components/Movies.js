@@ -1,7 +1,49 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 export default function Movies() {
+
+  var settings = {
+    autoplay: true,
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    cssEase: "linear",
+    autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow:3 ,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+      // You can unslick at a given breakpoint now by adding:
+      // settings: "unslick"
+      // instead of a settings object
+    ]
+  };
+
   const [movies, setmovies] = useState([]);
   const urlImage = "https://image.tmdb.org/t/p/original";
   useEffect(() => {
@@ -10,20 +52,25 @@ export default function Movies() {
     )
       .then((res) => res.json())
       .then((data) => setmovies(data));
-  },[]);
-  const list = movies?.results?.map((x) => {
-    return (<Wrap>
-      <Link href ={`./details?${x.id}`}>
-        <img src={`${urlImage}${x.backdrop_path}`} />
-        <p>{x.original_title}</p>
-        
-      </Link>
-    </Wrap>)
+  }, []);
+  const listHoror = movies?.results?.map((x) => {
+    return (
+      <Wrap>
+        <Link href={`./details?movie/${x.id}`}>
+          <img src={`${urlImage}${x.backdrop_path}`} />
+          <p>{x.original_title}</p>
+        </Link>
+      </Wrap>
+    );
   });
+
+ 
   return (
     <Container>
       <Title>Horor</Title>
-      <List>{ list }</List>
+      <List>
+        <Carousel {...settings}>{listHoror}</Carousel>
+      </List>
     </Container>
   );
 }
@@ -36,13 +83,13 @@ const Title = styled.p`
   color: white;
 `;
 const List = styled.div`
-  margin-top: 30px;
+  /* margin-top: 30px;
   display: grid;
   gap: 25px;
   grid-template-columns: repeat(5, 1fr);
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-  }
+  } */
 `;
 const Wrap = styled.div`
   position: relative;
@@ -59,7 +106,6 @@ const Wrap = styled.div`
   @media (min-width: 768px) {
     margin: 0;
     height: 150px;
-    
   }
 
   :hover {
@@ -92,12 +138,15 @@ const Link = styled.a`
     position: absolute;
     opacity: 0;
   }
-  >p {
-    position:absolute;
-    z-index:20000;
-    margin-top:50%;
-    @media (max-width:748px) {
-      margin-top:60%
+  > p {
+    position: absolute;
+    z-index: 20000;
+    margin-top: 50%;
+    @media (max-width: 748px) {
+      margin-top: 60%;
     }
   }
 `;
+const Carousel = styled(Slider)`
+  
+`

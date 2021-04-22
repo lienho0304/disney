@@ -6,8 +6,7 @@ function Home() {
  
   return (
     <div>
-
-<Views></Views>
+        <Views></Views>
         <VideoViewr></VideoViewr>
     </div>
        

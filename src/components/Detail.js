@@ -12,7 +12,7 @@ function Detail() {
   const urlImage = "https://image.tmdb.org/t/p/original";
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=53bbbda70531137f811dfa0b5a584909&language=en-US"`
+      `https://api.themoviedb.org/3/${id}?api_key=53bbbda70531137f811dfa0b5a584909&language=en-US"`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -29,7 +29,7 @@ console.log(typeof(rating))
 
   return (
     <Background urlImage={{ background: `${urlImage}${movies.backdrop_path}` }}>
-     <h3>{movies.original_title}</h3>
+     <h3>{`${movies.original_title?movies.original_title:movies.original_name}`}</h3>
       <DetailFilm>
         <Controls>
           <PlayButton>

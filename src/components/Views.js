@@ -36,6 +36,7 @@ function Views() {
           <img src="https://i5.walmartimages.com/asr/604725b8-9234-4f3f-98db-cc95131e4cdf_1.f89a63d45ebb475ac0ec7359b390f0d5.jpeg?odnHeight=450&odnWidth=450&odnBg=ffffff" />
         </Link>
       </Wrap>
+    
     </Carosel>
         
     )

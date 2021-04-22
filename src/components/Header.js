@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
@@ -6,11 +6,12 @@ import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
 import StarOutlinedIcon from "@material-ui/icons/StarOutlined";
 import GroupWorkIcon from "@material-ui/icons/GroupWork";
 import MovieIcon from "@material-ui/icons/Movie";
-import { Button } from "@material-ui/core";
+import { Button,Input } from "@material-ui/core";
 import { auth, provider } from "../firebase";
-console.log(auth)
-console.log(provider)
+import TextField from '@material-ui/core/TextField';
+
 function Header() {
+  const [inputValue,setInputValue] =useState('')
     const signIn = () => {
         auth.signInWithPopup(provider).catch(alert)
       };
@@ -23,10 +24,7 @@ function Header() {
           <HomeOutlinedIcon />
           <span>Home</span>
         </a>
-        <a href="./search">
-          <SearchOutlinedIcon />
-          <span>search</span>
-        </a>
+      
         <a href="./watchlist">
           <AddOutlinedIcon />
           <span>watchlist</span>
@@ -43,6 +41,12 @@ function Header() {
           <GroupWorkIcon />
           <span>series</span>
         </a>
+        <a  href='./search'>
+          <SearchOutlinedIcon  />
+          </a>
+          <TextField id="standard-primary" label="Enter Movie Name" color="primary" onChange={()=>setInputValue(e.target.value)} value={inputValue}/>
+       
+     
       </NavMenu>
       <LoginButton variant="outlined" onClick={signIn}>
         login
