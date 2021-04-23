@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import StarIcon from "@material-ui/icons/Star";
-import Rating from '@material-ui/lab/Rating'
+import Rating from "@material-ui/lab/Rating";
 
 function Detail() {
   const [movies, setmovies] = useState({});
-  const [rating,setRating] =useState(0)
+  const [rating, setRating] = useState(0);
   const id = window.location.search.replace("?", "");
   const urlImage = "https://image.tmdb.org/t/p/original";
   useEffect(() => {
@@ -16,20 +16,31 @@ function Detail() {
     )
       .then((res) => res.json())
       .then((data) => {
-        setmovies(data)
-        setRating(data.vote_average/2)
-      }
-      
-     
-      
-      )
-      
+        setmovies(data);
+        setRating(data.vote_average / 2);
+      });
   }, []);
-console.log(typeof(rating))
 
+  let setlocalStorage = () => {
+    let films = JSON.parse(localStorage.getItem("films")) ? JSON.parse(localStorage.getItem("films")) : [];
+    const film = {
+      id: id,
+      image: urlImage + movies.backdrop_path,
+      name:movies.original_title ? movies.original_title : movies.original_name
+    };
+
+    let ids = films.map((x) => x.id);
+    if (ids.indexOf(film.id) == -1) {
+      films.push(film);
+    }
+
+    localStorage.setItem("films", JSON.stringify(films));
+  };
   return (
     <Background urlImage={{ background: `${urlImage}${movies.backdrop_path}` }}>
-     <h3>{`${movies.original_title?movies.original_title:movies.original_name}`}</h3>
+      <h3>{`${
+        movies.original_title ? movies.original_title : movies.original_name
+      }`}</h3>
       <DetailFilm>
         <Controls>
           <PlayButton>
@@ -38,15 +49,19 @@ console.log(typeof(rating))
           <TrailerButton>
             Trailer <PlayArrowIcon />
           </TrailerButton>
-          <Player>
+          <Player onClick={setlocalStorage}>
             <span></span>
             <span></span>
           </Player>
         </Controls>
         <Sub>
-          Release:{movies.release_date}●Rating:
-          <Rating name="half-rating-read" value={`${rating}`} precision={0.5} readOnly />
-          
+          {movies.release_date}
+          <Rating
+            name="half-rating-read"
+            value={`${rating}`}
+            precision={0.5}
+            readOnly
+          />
         </Sub>
         <Detailtext>{movies.overview}</Detailtext>
       </DetailFilm>
@@ -64,22 +79,20 @@ const Background = styled.div`
   background-repeat: no-repeat;
   background-repeat: no-repeat;
   background-position: center;
-h3 {
-
-  position:absolute;
-  margin:18%;
-font-size:40px;
-  color:lightgrey !important;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  @media (min-width:748px) {
-    margin:10%;
-    font-size:60px;
+  h3 {
+    position: absolute;
+    margin: 18%;
+    font-size: 40px;
+    color: lightgrey !important;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    @media (min-width: 748px) {
+      margin: 10%;
+      font-size: 60px;
+    }
+    :hover {
+      color: black !important;
+    }
   }
-  :hover {
-    color:black!important;
-  }
-  
-}
 `;
 const Controls = styled.div`
   padding-top: 50vh;

@@ -1,42 +1,44 @@
-*{
+* {
   box-sizing: border-box;
 }
 html {
   scroll-behavior: smooth;
 }
 body {
-  background-color:#040714;
-  font-family:Avenir-Roman, Arial, sans-serif;
-  margin:0;
-  padding:0;
+  background-color: #040714;
+  font-family: Avenir-Roman, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   background-repeat: no-repeat;
-  background-size: 100% ;
+  background-size: 100%;
   background-position: top;
 }
 
-a{
-  color:#f9f9f9;
+a {
+  color: #f9f9f9;
   cursor: pointer;
-  text-decoration:none;
-
+  text-decoration: none;
 }
-
-
 
 @media screen and (min-width: 769px) {
-body {
-  font-size: 16px;
-}
+  body {
+    font-size: 16px;
+  }
 }
 
-@media screen and (min-device-width: 481px) and (max-device-width: 768px) { 
-body {
-  font-size: 15px;
-}
+@media screen and (min-device-width: 481px) and (max-device-width: 768px) {
+  body {
+    font-size: 15px;
+  }
 }
 
 @media only screen and (max-device-width: 480px) {
-body {
-  font-size: 14px;
+  body {
+    font-size: 14px;
+  }
 }
+
+input.MuiInputBase-input.MuiInput-input {
+  color: white;
+  border-bottom:1px solid white;
 }

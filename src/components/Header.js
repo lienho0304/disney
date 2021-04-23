@@ -9,19 +9,22 @@ import MovieIcon from "@material-ui/icons/Movie";
 import { Button, Input } from "@material-ui/core";
 import { auth, provider } from "../firebase";
 import TextField from "@material-ui/core/TextField";
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 function Header() {
   const [inputValue, setInputValue] = useState("");
   const signIn = () => {
     auth.signInWithPopup(provider).catch(alert);
   };
-onsubmit =(e) =>{
-e.preventDefault()
-window.location.href=`/search?${inputValue}`
-}
+  onsubmit = (e) => {
+    e.preventDefault();
+    if (e.target.value !== "") {
+      window.location.href = `/search?${inputValue}`;
+    }
+  };
+
   return (
     <Nav>
-      <DisneyLogo src="/images/disney.png" />
+      <DisneyLogo src="/images/logoanhlien.png" />
       <NavMenu>
         <a href="./home">
           <HomeOutlinedIcon />
@@ -32,10 +35,7 @@ window.location.href=`/search?${inputValue}`
           <AddOutlinedIcon />
           <span>watchlist</span>
         </a>
-        <a href="./original">
-          <StarOutlinedIcon />
-          <span>original</span>
-        </a>
+
         <a href="./movies">
           <MovieIcon />
           <span>movie</span>
@@ -44,16 +44,18 @@ window.location.href=`/search?${inputValue}`
           <GroupWorkIcon />
           <span>series</span>
         </a>
-       
-         
-        
-        <form onSubmit ={onsubmit}>
-        <button  type="submit" value="Submit"><SearchOutlinedIcon style ={{color:"white"}} /></button> 
-        <InputSearch  
-     onChange={(e)=>{setInputValue(e.target.value)}}
-     value ={inputValue}
-     
-        />
+
+        <form onSubmit={onsubmit} style={{ marginBottom: "1em" }}>
+          <SearchOutlinedIcon style={{ color: "white", marginTop: "0.8em" }} />
+          <TextField
+          style={{top:"1em"}}
+            onChange={(e) => {
+              setInputValue(e.target.value);
+            }}
+            value={inputValue}
+            color="primary"
+            autocomplete="off"
+          />
         </form>
       </NavMenu>
       <LoginButton variant="outlined" onClick={signIn}>
@@ -70,7 +72,7 @@ const Nav = styled.nav`
   top: 0;
   left: 0;
   right: 0;
-  background-color: black;
+  background-color: #000000;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -101,12 +103,10 @@ const NavMenu = styled.div`
   margin-left: 20px;
   margin-right: auto;
   button {
-    background-color:transparent;
- 
-  
-    border :black;
-    cursor: pointer;
+    background-color: transparent;
 
+    border: black;
+    cursor: pointer;
   }
   a {
     display: flex;
@@ -138,17 +138,7 @@ const NavMenu = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 748px) {
     display: none;
   }
 `;
-const InputSearch=styled.input`
-color:white;
-border:solid black 1px;;
-background-color:transparent;
-:hover {
-  border-bottom:1px white solid;
-}
-
-;
-`

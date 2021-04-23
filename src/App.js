@@ -8,6 +8,7 @@ import Series from './components/Series';
 import Movies from './components/Movies';
 import Detail from './components/Detail';
 import Search from './components/Search'
+import Watchlist from './components/Watchlist';
 function App() {
   return (
     <BrowserRouter>
@@ -33,6 +34,9 @@ function App() {
      </Route>
      <Route path ='/search'>
        <Search/>
+     </Route>
+     <Route path ='/watchlist'>
+       <Watchlist/>
      </Route>
      
      

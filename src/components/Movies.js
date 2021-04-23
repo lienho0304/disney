@@ -1,63 +1,51 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+import Pagination from "@material-ui/lab/Pagination";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
+import LinearProgress from "@material-ui/core/LinearProgress";
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
+    root: {
+      "& > *": {
+        marginTop: theme.spacing(2),
+      },
+      "& .MuiPaginationItem-outlinedPrimary.Mui-selected": {
+        backgroundColor: "white",
+        color: "black",
+      },
+      "& .MuiPaginationItem-rounded": {
+        backgroundColor: "#b0a4a4",
+      },
+      "& .MuiPaginationItem-root": {
+        color: "white",
+      },
+    },
+  })
+);
+
 export default function Movies() {
-
-  var settings = {
-    autoplay: true,
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    cssEase: "linear",
-    autoplaySpeed: 2000,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow:3 ,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
-    ]
-  };
-
+  const classes = useStyles();
+  const [page, setPage] = useState(1);
   const [movies, setmovies] = useState([]);
+  const [checkLoading, setCheckLoading] = useState(true);
   const urlImage = "https://image.tmdb.org/t/p/original";
-  console.log(window.location)
+
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/discover/movie?api_key=53bbbda70531137f811dfa0b5a584909&language=en-US"
+      `https://api.themoviedb.org/3/discover/movie?api_key=53bbbda70531137f811dfa0b5a584909&language=en-US&page=${page}`
     )
       .then((res) => res.json())
-      .then((data) => setmovies(data));
-  }, []);
-  const listHoror = movies?.results?.map((x) => {
+      .then((data) => {
+        setmovies(data);
+        setCheckLoading(false);
+      });
+  }, [page]);
+
+  const list = movies?.results?.slice(0, 15).map((x) => {
     return (
       <Wrap>
-        <Link href={`./details?movie/${x.id}`}>
+        <Link href={`./details?tv/${x.id}`}>
           <img src={`${urlImage}${x.backdrop_path}`} />
           <p>{x.original_title}</p>
         </Link>
@@ -65,13 +53,23 @@ export default function Movies() {
     );
   });
 
- 
+  const onChangePage = (e, page) => {
+    setPage(page);
+    setCheckLoading(true);
+  };
+
   return (
     <Container>
-      <Title>Horor</Title>
-      <List>
-        <Carousel {...settings}>{listHoror}</Carousel>
-      </List>
+      {checkLoading && <LinearProgress />}
+      <List>{list}</List>
+      <Pagination
+        className={classes.root}
+        count={10}
+        variant="outlined"
+        color="primary"
+        shape="rounded"
+        onChange={(e, page) => onChangePage(e, page)}
+      />
     </Container>
   );
 }
@@ -84,13 +82,13 @@ const Title = styled.p`
   color: white;
 `;
 const List = styled.div`
-  /* margin-top: 30px;
+  margin-top: 30px;
   display: grid;
   gap: 25px;
   grid-template-columns: repeat(5, 1fr);
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-  } */
+  }
 `;
 const Wrap = styled.div`
   position: relative;
@@ -106,7 +104,7 @@ const Wrap = styled.div`
   transform: scale(1);
   @media (min-width: 768px) {
     margin: 0;
-    height: 150px;
+    height: 180px;
   }
 
   :hover {
@@ -142,12 +140,9 @@ const Link = styled.a`
   > p {
     position: absolute;
     z-index: 20000;
-    margin-top: 50%;
+    margin-top: 40%;
     @media (max-width: 748px) {
       margin-top: 60%;
     }
   }
 `;
-const Carousel = styled(Slider)`
-  
-`

@@ -17,9 +17,9 @@ export default function Search() {
   const list = movies?.results?.map((x) => {
       if (x.backdrop_path)
     return (<Wrap>
-      <Link href ={`./details?tv/${x.id}`}>
+      <Link href ={`./details?movie/${x.id}`}>
         <img src={`${urlImage}${x.backdrop_path}`} />
-        <p>{x.original_name}</p>
+        <p>{`${x.original_title?x.original_title:x.original_name}`}</p>
         
       </Link>
     </Wrap>)
@@ -72,6 +72,9 @@ const Wrap = styled.div`
     video {
       opacity: 1;
     }
+    p {
+      opacity:1
+    }
   }
 `;
 
@@ -99,7 +102,8 @@ const Link = styled.a`
   >p {
     position:absolute;
     z-index:20000;
-    margin-top:50%;
+    margin-top:40%;
+    opacity:0;
     @media (max-width:748px) {
       margin-top:60%
     }
