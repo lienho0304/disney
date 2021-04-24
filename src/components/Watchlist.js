@@ -6,26 +6,34 @@ import {Button} from '@material-ui/core'
 import Header from "./Header";
 function Watchlist() {
   const [films, setFilms] = useState([]);
+ const DeleteItem =(item) =>{
+let deletefim =films.find(film=>film.id===item.id)
+let indexfim =films.indexOf(deletefim)
+  films.splice(indexfim,1)
+  setFilms(films)
 
+  localStorage.setItem("films", JSON.stringify(films))
+
+ }
   useEffect(() => {
     let films = JSON.parse(localStorage.getItem("films"));
     setFilms(films);
-  }, []);
+  }, [films]);
 
   let list = films.map((film) => 
  
       (
         
     <Wrap>
-      <Link href={`/details?${film.id}`}>
+      <Link >
         <img src={`${film.image}`} alt={film.name}/>
-        <p>{film.name}</p>
+      
     
       </Link>
-       <ButtonGroup>
-         <Button color="secondary" size="large" >< DeleteIcon fontSize="large" /></Button>
-         <Button color="primary" size="large" ><InfoIcon fontSize="large" /></Button>
-       </ButtonGroup>
+       <div>
+         <Button color="secondary" size="large" onClick={()=>DeleteItem(film)} >< DeleteIcon fontSize="large" /></Button>
+         <Button color="primary" size="large" onClick ={()=>{window.location.href=`/details?${film.id}`}}><InfoIcon fontSize="large" /></Button>
+       </div>
  
     </Wrap>
    
@@ -61,7 +69,15 @@ align-items:center;
   :hover {
     border: 4px solid whitesmoke;
     transform: scale(1.05);
+   div {
+     opacity:1
+   }
    
+  }
+  div {
+    position:absolute;
+z-index:100;
+opacity:0
   }
 
 `;
@@ -103,8 +119,3 @@ grid-template-columns: repeat(2, 1fr);
     }
 
 `;
-const ButtonGroup =styled.div`
-
-position:absolute;
-z-index:100;
-`

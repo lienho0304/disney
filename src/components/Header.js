@@ -22,7 +22,7 @@ const LogOut =() =>{
 
   return (
     <Nav>
-      <DisneyLogo src="/images/logoanhlien.png" />
+      <a  href ="./home"><DisneyLogo src="/images/logoanhlien.png" /></a>
       <NavMenu>
         <a href="./home">
           <HomeOutlinedIcon />
@@ -77,6 +77,10 @@ const Nav = styled.nav`
   height: 70px;
   align-items: center;
   padding: 0 36px;
+ a {
+   height:100%;
+
+ }
 `;
 const DisneyLogo = styled.img`
   height: 100%;
