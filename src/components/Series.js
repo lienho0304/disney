@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Pagination from "@material-ui/lab/Pagination";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import Header from "./Header";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -60,6 +61,7 @@ export default function Series() {
 
   return (
     <Container>
+      <Header/>
       {checkLoading && <LinearProgress />}
       <List>{list}</List>
       <Pagination

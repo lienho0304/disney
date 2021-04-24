@@ -2,12 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import {Button} from "@material-ui/core"
 function Login() {
+  const login=() =>{
+    window.location.href ="./login"
+  }
   return (
     <Container>
       <Content>
         <LoginBackground>
           <Icon src="/images/icon.png" />
-          <Signup color="primary" variant="contained">GET ALL THERE</Signup>
+          <Signup color="primary" variant="contained" onClick ={login}>GET ALL THERE</Signup>
           <Decription>
             Et hendrerit cubilia rutrum. A parturient luctus ridiculus etiam.
             Augue. Sollicitudin varius mi scelerisque primis. Nascetur ridiculus

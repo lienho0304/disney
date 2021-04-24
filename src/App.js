@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Detail from "./components/Detail";
-import Header from "./components/Header";
+
 import Home from "./components/Home";
 import Login from "./components/Login";
 import LoginUser from "./components/LoginUser";
@@ -15,14 +15,22 @@ function App() {
 
 
   return (
+    
+    <div className="App">
     <BrowserRouter>
-      <div className="App">
-        <Route path="/login" component={LoginUser} />
-        <Header />
-        <Switch>
-          <Route path="/hello" component={Login} />
+      
+    
+      <Route exact path="/" component={Login} />
+     
+      
 
-          <Route path="/register" component={Register} />
+        
+        
+        <Switch>
+        <Route path="/login" component={LoginUser} />
+          
+
+          <Route  path="/register" component={Register} />
 
           <Route path="/home" component={Home} />
 
@@ -36,8 +44,9 @@ function App() {
 
           <Route path="/watchlist" component={Watchlist} />
         </Switch>
-      </div>
+ 
     </BrowserRouter>
+         </div>
   );
 }
 

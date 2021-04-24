@@ -11,6 +11,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React, { useState,useEffect } from "react";
+import Alert from '@material-ui/lab/Alert';
 import {db} from "../firebase"
 
 const useStyles = makeStyles((theme) => ({
@@ -38,8 +39,10 @@ export default function LoginUser() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [dataUsers, setDataUsers] = useState([]);
+  const [alert,setAlert] =useState('')
   const fetchUsers = async () => {
     const response = db.collection("users");
+    
     const data = await response.get();
     data.forEach((item) => {
       setDataUsers([...dataUsers, item.data()]);
@@ -60,13 +63,15 @@ export default function LoginUser() {
     if (exitEmail(email) ){
        if (rightPassword(password))  {
          window.location.href="/home"
+         setAlert(<Alert severity="success">Login Successfully</Alert>)
+         
        }
        else {
-         alert ('your password wrong')
+       setAlert (<Alert severity="error">your password wrong!</Alert>)
        }
     } 
     else {
-      alert('you dont have an account')
+     setAlert(<Alert severity="error">you have not registerd yet</Alert>) 
     }
   }
   return (
@@ -88,7 +93,7 @@ export default function LoginUser() {
             id="email"
             label="Email Address"
             name="email"
-            autoComplete="email"
+           
             autoFocus
             onChange={(e) => setEmail(e.target.value)}
             value={email}
@@ -106,10 +111,7 @@ export default function LoginUser() {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+         
           <Button
             fullWidth
             variant="contained"
@@ -120,13 +122,9 @@ export default function LoginUser() {
             Sign In
           </Button>
           <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
+          {alert}
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

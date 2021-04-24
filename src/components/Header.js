@@ -10,7 +10,9 @@ import styled from "styled-components";
 
 function Header() {
   const [inputValue, setInputValue] = useState("");
-
+const LogOut =() =>{
+  window.location.href ="/"
+}
   onsubmit = (e) => {
     e.preventDefault();
     if (e.target.value !== "") {
@@ -54,7 +56,7 @@ function Header() {
           />
         </form>
       </NavMenu>
-      <LoginButton variant="outlined">login</LoginButton>
+      <LoginButton variant="outlined" onClick ={LogOut}>LogOut</LoginButton>
     </Nav>
   );
 }

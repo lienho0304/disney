@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DeleteIcon from '@material-ui/icons/Delete';
 import InfoIcon from '@material-ui/icons/Info';
 import {Button} from '@material-ui/core'
+import Header from "./Header";
 function Watchlist() {
   const [films, setFilms] = useState([]);
 
@@ -29,7 +30,15 @@ function Watchlist() {
     </Wrap>
    
   ));
-  return <List>{list}</List>;
+  return (
+    <div>
+    <Header/>
+      <List>{list}</List>
+  </div>
+  )
+
+  
+;
 }
 
 export default Watchlist;

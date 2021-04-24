@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
+import Alert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,6 +39,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [dataUsers,setDataUsers]=useState([])
+  const [alert,setAlert]=useState([])
   const fetchUsers=async()=>{
     const response=db.collection('users');
     const data=await response.get();
@@ -56,9 +58,12 @@ const onSendDatatoFirebase =() =>{
   email,
   password
   })
-alert('you sign up successfully')
+  setAlert(<Alert severity="success">SignOut Successfully Go to Login</Alert>)
  }
- else {alert('you hace account already') }
+ else {
+
+  setAlert(<Alert severity="error">Email was used. Enter new email</Alert>)
+ }
  setFirstName('')
  setLastName('')
  setEmail('')
@@ -146,6 +151,7 @@ const exitEmail =(email) =>{
           >
             Sign Up
           </Button>
+          {alert}
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="/login" variant="body2">

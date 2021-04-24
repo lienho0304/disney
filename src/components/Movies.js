@@ -3,6 +3,7 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 import Pagination from "@material-ui/lab/Pagination";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import Header from "./Header";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -60,6 +61,7 @@ export default function Movies() {
 
   return (
     <Container>
+      <Header/>
       {checkLoading && <LinearProgress />}
       <List>{list}</List>
       <Pagination

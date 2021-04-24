@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import Header from "./Header";
 
 export default function Search() {
   const [movies, setmovies] = useState([]);
@@ -26,7 +27,7 @@ export default function Search() {
   });
   return (
     <Container>
-      
+      <Header/>
       <List>{ list }</List>
     </Container>
   );

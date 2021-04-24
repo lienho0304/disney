@@ -3,6 +3,7 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import Rating from "@material-ui/lab/Rating";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import Header from "./Header";
 
 function Detail() {
   const [movies, setmovies] = useState({});
@@ -37,6 +38,7 @@ function Detail() {
   };
   return (
     <Background urlImage={{ background: `${urlImage}${movies.backdrop_path}` }}>
+      <Header/>
       <h3>{`${
         movies.original_title ? movies.original_title : movies.original_name
       }`}</h3>
