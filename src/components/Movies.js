@@ -1,8 +1,8 @@
+import LinearProgress from "@material-ui/core/LinearProgress";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
+import Pagination from "@material-ui/lab/Pagination";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Pagination from "@material-ui/lab/Pagination";
-import { makeStyles, createStyles } from "@material-ui/core/styles";
-import LinearProgress from "@material-ui/core/LinearProgress";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -46,7 +46,7 @@ export default function Movies() {
     return (
       <Wrap>
         <Link href={`./details?tv/${x.id}`}>
-          <img src={`${urlImage}${x.backdrop_path}`} />
+          <img src={`${urlImage}${x.backdrop_path}`}  alt={x.original_title} />
           <p>{x.original_title}</p>
         </Link>
       </Wrap>
@@ -77,10 +77,6 @@ const Container = styled.div`
   margin: 6em 1em;
 `;
 
-const Title = styled.p`
-  font-size: 1.5em;
-  color: white;
-`;
 const List = styled.div`
   margin-top: 30px;
   display: grid;

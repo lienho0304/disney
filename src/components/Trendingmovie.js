@@ -58,7 +58,7 @@ export default function TrendingMovies() {
     return (
       <Wrap>
         <Link href={`./details?movie/${x.id}`}>
-          <img src={`${urlImage}${x.backdrop_path}`} />
+          <img src={`${urlImage}${x.backdrop_path}`} alt={x.original_title}/>
           <p>{x.original_title}</p>
         </Link>
       </Wrap>
@@ -117,7 +117,7 @@ const Wrap = styled.div`
   :hover {
     border: 4px solid whitesmoke;
     transform: scale(1.05);
-    video,p {
+    video {
       opacity: 1;
     }
   }
@@ -151,7 +151,7 @@ const Link = styled.a`
     @media (max-width: 748px) {
       margin-top: 60%;
     }
-    opacity:0;
+   
   }
 `;
 const Carousel = styled(Slider)`

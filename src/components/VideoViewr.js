@@ -6,7 +6,7 @@ function VideoViewr() {
     <Container>
       <Wrap>
         <Link>
-          <img src="http://logos-download.com/wp-content/uploads/2016/06/Disney_logo.png" />
+          <img src="http://logos-download.com/wp-content/uploads/2016/06/Disney_logo.png"  alt ="x"/>
 
           <video autoPlay={true} loop={true}>
             <source src="https://www.youtube.com/watch?v=SyxwEAukR30" type="video/mp4" />
@@ -15,7 +15,7 @@ function VideoViewr() {
       </Wrap>
       <Wrap>
         <Link>
-          <img src="http://s1.ibtimes.com/sites/www.ibtimes.com/files/styles/lg/public/2016/07/30/netflix.png" />
+          <img src="http://s1.ibtimes.com/sites/www.ibtimes.com/files/styles/lg/public/2016/07/30/netflix.png" alt="*" />
 
           <video autoPlay={true} loop={true}>
             <source src="/https://www.youtube.com/watch?v=SyxwEAukR30" type="video/mp4" />
@@ -24,7 +24,7 @@ function VideoViewr() {
       </Wrap>
       <Wrap>
         <Link>
-          <img src="https://fanart.tv/fanart/movies/528888/hdmovielogo/dolemite-is-my-name-5d7d02f933941.png" />
+          <img src="https://fanart.tv/fanart/movies/528888/hdmovielogo/dolemite-is-my-name-5d7d02f933941.png" alt="*"/>
 
           <video autoPlay={true} loop={true}>
             <source src="https://www.youtube.com/watch?v=z1qy5wSZAQI" />
@@ -33,7 +33,7 @@ function VideoViewr() {
       </Wrap>
       <Wrap>
         <Link>
-          <img src="http://fanart.tv/fanart/movies/11224/movielogo/cinderella-4f91baeda627f.png" />
+          <img src="http://fanart.tv/fanart/movies/11224/movielogo/cinderella-4f91baeda627f.png" alt="*" />
 
           <video autoPlay={true} loop={true}>
             <source src="https://stock.adobe.com/search/free?gallery_id=l8WrDPvUywXrMdtXYZW05TfmyHiXEyop&filters%5Bcontent_type%3Aphoto%5D=1&filters%5Bcontent_type%3Aillustration%5D=1&filters%5Bcontent_type%3Azip_vector%5D=1&filters%5Bcontent_type%3Avideo%5D=0&filters%5Bcontent_type%3Atemplate%5D=0&filters%5Bcontent_type%3A3d%5D=0&filters%5Binclude_stock_enterprise%5D=0&filters%5Bcontent_type%3Aimage%5D=1&filters%5Bfree_collection%5D=1&filters%5Border%5D=relevance&order=relevance&safe_search=1&limit=100&search_type=asset-type-change&search_page=1&get_facets=0&asset_id=414937322" />
@@ -42,7 +42,7 @@ function VideoViewr() {
       </Wrap>
       <Wrap>
         <Link>
-          <img src="https://terrigen-cdn-dev.marvel.com/content/prod/1x/thor_lob_log_03.png" />
+          <img src="https://terrigen-cdn-dev.marvel.com/content/prod/1x/thor_lob_log_03.png" alt="*"/>
 
           <video autoPlay={true} loop={true}>
             <source src="/images/video3.mp4" type="video/mp4" />

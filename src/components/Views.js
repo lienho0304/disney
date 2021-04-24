@@ -23,17 +23,17 @@ function Views() {
      
       <Wrap>
         <Link>
-          <img src="https://pbs.twimg.com/media/D2jvOdmUgAALnnx.jpg:large" />
+          <img src="https://pbs.twimg.com/media/D2jvOdmUgAALnnx.jpg:large" alt="*" />
         </Link>
       </Wrap>
       <Wrap>
         <Link>
-          <img src="http://pm1.narvii.com/7252/748361fef300f756138ccbfcaafb5d07b71148fbr1-1300-867v2_uhq.jpg" />
+          <img src="http://pm1.narvii.com/7252/748361fef300f756138ccbfcaafb5d07b71148fbr1-1300-867v2_uhq.jpg" alt="*" />
         </Link>
       </Wrap>
       <Wrap>
         <Link>
-          <img src="https://i5.walmartimages.com/asr/604725b8-9234-4f3f-98db-cc95131e4cdf_1.f89a63d45ebb475ac0ec7359b390f0d5.jpeg?odnHeight=450&odnWidth=450&odnBg=ffffff" />
+          <img src="https://i5.walmartimages.com/asr/604725b8-9234-4f3f-98db-cc95131e4cdf_1.f89a63d45ebb475ac0ec7359b390f0d5.jpeg?odnHeight=450&odnWidth=450&odnBg=ffffff"  alt="*"/>
         </Link>
       </Wrap>
     

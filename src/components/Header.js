@@ -1,20 +1,16 @@
+import { Button } from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
+import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
+import GroupWorkIcon from "@material-ui/icons/GroupWork";
+import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+import MovieIcon from "@material-ui/icons/Movie";
+import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import React, { useState } from "react";
 import styled from "styled-components";
-import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
-import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
-import AddOutlinedIcon from "@material-ui/icons/AddOutlined";
-import StarOutlinedIcon from "@material-ui/icons/StarOutlined";
-import GroupWorkIcon from "@material-ui/icons/GroupWork";
-import MovieIcon from "@material-ui/icons/Movie";
-import { Button, Input } from "@material-ui/core";
-import { auth, provider } from "../firebase";
-import TextField from "@material-ui/core/TextField";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 function Header() {
   const [inputValue, setInputValue] = useState("");
-  const signIn = () => {
-    auth.signInWithPopup(provider).catch(alert);
-  };
+
   onsubmit = (e) => {
     e.preventDefault();
     if (e.target.value !== "") {
@@ -48,19 +44,17 @@ function Header() {
         <form onSubmit={onsubmit} style={{ marginBottom: "1em" }}>
           <SearchOutlinedIcon style={{ color: "white", marginTop: "0.8em" }} />
           <TextField
-          style={{top:"1em"}}
+            style={{ top: "1em" }}
             onChange={(e) => {
               setInputValue(e.target.value);
             }}
             value={inputValue}
             color="primary"
-            autocomplete="off"
+            autoComplete="off"
           />
         </form>
       </NavMenu>
-      <LoginButton variant="outlined" onClick={signIn}>
-        login
-      </LoginButton>
+      <LoginButton variant="outlined">login</LoginButton>
     </Nav>
   );
 }

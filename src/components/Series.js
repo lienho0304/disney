@@ -46,7 +46,7 @@ export default function Series() {
     return (
       <Wrap>
         <Link href={`./details?tv/${x.id}`}>
-          <img src={`${urlImage}${x.backdrop_path}`} />
+          <img src={`${urlImage}${x.backdrop_path}`} alt={x.original_name} />
           <p>{x.original_name}</p>
         </Link>
       </Wrap>
@@ -77,10 +77,7 @@ const Container = styled.div`
   margin: 6em 1em;
 `;
 
-const Title = styled.p`
-  font-size: 1.5em;
-  color: white;
-`;
+
 const List = styled.div`
   margin-top: 30px;
   display: grid;

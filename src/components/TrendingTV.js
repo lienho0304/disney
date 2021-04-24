@@ -58,7 +58,7 @@ export default function TrendingTV() {
     return (
       <Wrap>
         <Link href={`./details?movie/${x.id}`}>
-          <img src={`${urlImage}${x.backdrop_path}`} />
+          <img src={`${urlImage}${x.backdrop_path}`}  alt={x.original_name}/>
           <p>{x.original_name}</p>
         </Link>
       </Wrap>
@@ -149,7 +149,7 @@ const Link = styled.a`
   }
   > p {
     position: absolute;
-    opacity:0;
+  
     z-index: 20000;
     margin-top: 40%;
     @media (max-width: 748px) {

@@ -1,9 +1,8 @@
-import styled from "styled-components";
-import React, { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import StarIcon from "@material-ui/icons/Star";
 import Rating from "@material-ui/lab/Rating";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
 function Detail() {
   const [movies, setmovies] = useState({});
@@ -19,7 +18,7 @@ function Detail() {
         setmovies(data);
         setRating(data.vote_average / 2);
       });
-  }, []);
+  });
 
   let setlocalStorage = () => {
     let films = JSON.parse(localStorage.getItem("films")) ? JSON.parse(localStorage.getItem("films")) : [];
@@ -30,7 +29,7 @@ function Detail() {
     };
 
     let ids = films.map((x) => x.id);
-    if (ids.indexOf(film.id) == -1) {
+    if (ids.indexOf(film.id) === -1) {
       films.push(film);
     }
 
@@ -130,10 +129,7 @@ const TrailerButton = styled(Button)`
     flex: 0.3 !important;
   }
 `;
-const Container = styled.div`
-  height: 100vh;
-  width: 100%;
-`;
+
 const Player = styled.button`
   border-radius: 50% !important;
   margin-left: 20px;

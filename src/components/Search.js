@@ -12,13 +12,13 @@ export default function Search() {
     )
       .then((res) => res.json())
       .then((data) => setmovies(data));
-  },[]);
+  });
   console.log(movies)
   const list = movies?.results?.map((x) => {
       if (x.backdrop_path)
     return (<Wrap>
       <Link href ={`./details?movie/${x.id}`}>
-        <img src={`${urlImage}${x.backdrop_path}`} />
+        <img src={`${urlImage}${x.backdrop_path}`} alt={x.original_title?x.original_title:x.original_name} />
         <p>{`${x.original_title?x.original_title:x.original_name}`}</p>
         
       </Link>
@@ -35,10 +35,7 @@ const Container = styled.div`
   margin: 6em 1em;
 `;
 
-const Title = styled.p`
-  font-size: 1.5em;
-  color: white;
-`;
+
 const List = styled.div`
   margin-top: 30px;
   display: grid;
@@ -72,9 +69,7 @@ const Wrap = styled.div`
     video {
       opacity: 1;
     }
-    p {
-      opacity:1
-    }
+  
   }
 `;
 
@@ -103,7 +98,7 @@ const Link = styled.a`
     position:absolute;
     z-index:20000;
     margin-top:40%;
-    opacity:0;
+    
     @media (max-width:748px) {
       margin-top:60%
     }
